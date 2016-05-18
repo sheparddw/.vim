@@ -19,6 +19,9 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 
+" Custom Status Line
+NeoBundle 'bling/vim-airline'
+
 " Display your undo history in a graph.
 NeoBundle 'mbbill/undotree'
 " Plugin for File Tree

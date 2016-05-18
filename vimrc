@@ -9,6 +9,7 @@ set number " always show line numbers
 set ruler " Show line number in bottom-right of screen
 set wrap " Wrap long lines (soft wrap)
 set linebreak " only wrap on breakat characters
+set backspace=indent,eol,start " Solve backspace problems
 set nolist " list disables linebreak
 set nolz " no lazy redraw
 set autochdir " Always cd to the current file's directory
@@ -52,6 +53,18 @@ let mapleader = ","
 let g:mapleader = ","
 " Fast saves
 nmap <leader>w :w!<cr>
+
+" Custom Status (Airline) Options
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline#extensions#branch#use_vcscommand = 1 " Use VCSCommand for branch info when applicable
+let g:airline#extensions#csv#column_display = 'Name'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#close_symbol = ''
+let g:airline#extensions#whitespace#checks = [ 'indent' ]
 
 "Easy escaping to normal model
 imap jj <esc>
