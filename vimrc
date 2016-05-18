@@ -60,6 +60,8 @@ nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
 command -bang Q quit<bang>
+" Allow easy copying to system clipboard
+vnoremap <leader>y "*y"
 
 
 " Map NerdTree for easy file navigation
