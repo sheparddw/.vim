@@ -53,6 +53,8 @@ let mapleader = ","
 let g:mapleader = ","
 " Fast saves
 nmap <leader>w :w!<cr>
+let g:syntastic_javascript_checkers = ['eslint']
+
 
 " Custom Status (Airline) Options
 let g:airline_left_sep = '»'
