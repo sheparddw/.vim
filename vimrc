@@ -5,21 +5,22 @@ source ~/.vim/bundles.vim
 colorscheme PaperColor
 
 set background=dark
-set number " always show line numbers
+set number " Always show line numbers
 set ruler " Show line number in bottom-right of screen
 set wrap " Wrap long lines (soft wrap)
-set linebreak " only wrap on breakat characters
+set linebreak " Only wrap on breakat characters
 set backspace=indent,eol,start " Solve backspace problems
-set nolist " list disables linebreak
-set nolz " no lazy redraw
+set nolist " List disables linebreak
+set nolz " No lazy redraw
 set autochdir " Always cd to the current file's directory
-set hidden " enable undo history for when you switch buffers from one file to another. 
+set hidden " Enable undo history for when you switch buffers from one file to another. 
 set scrolloff=1 " Always have at least one line above or below the cursor.
 set tabstop=4 " Switch tabs to spaces
 set shiftwidth=4
 set expandtab
 set mouse=a
 set laststatus=2
+set nofoldenable " Disable Code Folding.
 syntax enable " Enable syntax highlighting
 
 
