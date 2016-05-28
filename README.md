@@ -7,7 +7,12 @@ Clone this repository to your home directory:
 ```
 git clone git@github.com:sheparddw/vim.git ~/.vim
 ```
-You may have to set up a symbolic link to get it to work on some servers:
+Then install NeoBundle (a Vim Plugin Manager):
+```
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+```
+You may have to set up a symbolic link to get this vim configuration to work on some servers:
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
+Enjoy.
