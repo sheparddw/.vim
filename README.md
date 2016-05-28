@@ -15,4 +15,5 @@ You may have to set up a symbolic link to get this vim configuration to work on 
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
+See vimrc file comments for more information on what is included.
 Enjoy.
