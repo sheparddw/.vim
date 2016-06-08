@@ -21,6 +21,8 @@ NeoBundle 'tacahiroy/ctrlp-funky'
 
 " Custom Status Line
 NeoBundle 'bling/vim-airline'
+" Git Wrapper
+NeoBundle 'tpope/vim-fugitive'
 
 " Display your undo history in a graph.
 NeoBundle 'mbbill/undotree'
@@ -43,6 +45,8 @@ NeoBundle '2072/PHP-Indenting-for-VIm'
 
 "" Indenting
 NeoBundle 'swekaj/php-foldexpr.vim'
+" Fix indentation issues when pasting.
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 "" Syntax 
 NeoBundle 'StanAngeloff/php.vim'
