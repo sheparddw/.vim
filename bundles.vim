@@ -32,8 +32,6 @@ NeoBundle 'scrooloose/nerdtree.git'
 " A vim plugin to display the indention levels with thin vertical lines
 NeoBundle 'Yggdroot/indentLine'
 
-" The missing motion in vim
-NeoBundle 'justinmk/vim-sneak'
 " Syntax checking hacks for vim
 NeoBundle 'scrooloose/syntastic'
 " Emmet HTML Shorthand
@@ -55,9 +53,12 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'Valloric/MatchTagAlways'
+" Auto Close HTML/JSX tags
+NeoBundle 'alvan/vim-closetag'
 
-
-filetype plugin indent on     " required
+" Allow Auto-Indenting. 
+filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.

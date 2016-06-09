@@ -55,6 +55,13 @@ let PHP_removeCRwhenUnix = 1
 au FileType javascript setl ts=2 sw=2 sts=2
 let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
+let g:closetag_filenames = "*.html,*.js,*.php"
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'javascript' : 1,
+    \}
 
 " Ctrl-P settings
 " Ignore .git and .svn directories, the vendor folder, .csv and .log files
