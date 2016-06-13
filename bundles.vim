@@ -19,6 +19,9 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 
+" Zoom Windows with <C-w>o
+NeoBundle 'ZoomWin'
+
 " Custom Status Line
 NeoBundle 'bling/vim-airline'
 " Git Wrapper
