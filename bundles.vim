@@ -24,6 +24,8 @@ NeoBundle 'ZoomWin'
 
 " Custom Status Line
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'edkolev/tmuxline.vim'
 " Git Wrapper
 NeoBundle 'tpope/vim-fugitive'
 
