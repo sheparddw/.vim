@@ -62,7 +62,7 @@ NeoBundle 'Valloric/MatchTagAlways'
 " Auto Close HTML/JSX tags
 NeoBundle 'alvan/vim-closetag'
 
-" Allow Auto-Indenting. 
+" Allow Auto-Indenting.
 filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,

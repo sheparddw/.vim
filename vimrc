@@ -17,10 +17,15 @@ set scrolloff=1 " Always have at least one line above or below the cursor.
 set tabstop=4 " Switch tabs to spaces
 set shiftwidth=4
 set expandtab
-set mouse=a
-set laststatus=2
+set mouse=a " Allow mouse.
+set laststatus=2 " Always show status bar.
 set nofoldenable " Disable Code Folding.
 syntax enable " Enable syntax highlighting
+set incsearch " Go to search while typing.
+set ignorecase " Searches are case insensitive unless uppercase is used.
+set smartcase
+set hlsearch " Highlight Search Match.
+nmap \q :nohlsearch<CR> " Get Rid of Highlighting.
 
 "Easy escaping to normal model
 imap jj <esc>
@@ -49,13 +54,16 @@ endif
 
 " PHP
 let PHP_removeCRwhenUnix = 1
+let g:syntastic_php_checkers = ['php','phpcs']
+let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
+let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 
 " JavaScript
 " Change tab widths to 2 spaces
 au FileType javascript setl ts=2 sw=2 sts=2
 let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.js,*.php"
+let g:closetag_filenames = "*.html,*.php"
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
