@@ -13,7 +13,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " provides insert mode auto-completion for quotes, parens, brackets, etc.
 NeoBundle 'Raimondi/delimitMate'
+" Commenting shortcuts.
 NeoBundle 'scrooloose/nerdcommenter'
+" Display autocomplete popup while typing.
 NeoBundle 'exvim/ex-autocomplpop'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
@@ -26,6 +28,7 @@ NeoBundle 'ZoomWin'
 " Custom Status Line
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
+" Match Tmux line to Vim Status line
 NeoBundle 'edkolev/tmuxline.vim'
 " Git Wrapper
 NeoBundle 'tpope/vim-fugitive'
