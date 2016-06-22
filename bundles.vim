@@ -14,6 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " provides insert mode auto-completion for quotes, parens, brackets, etc.
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'exvim/ex-autocomplpop'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 NeoBundle 'kien/ctrlp.vim'
