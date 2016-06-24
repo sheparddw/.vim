@@ -24,8 +24,6 @@ syntax enable " Enable syntax highlighting
 set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
-set hlsearch " Highlight Search Match.
-nmap \q :nohlsearch<CR> " Get Rid of Highlighting.
 
 "Easy escaping to normal model
 imap jj <esc>
