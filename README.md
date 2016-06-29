@@ -20,4 +20,4 @@ You may have to set up a symbolic link to get this vim configuration to work on 
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
-To get Icons to work, download a [nerd-font](https://github.com/ryanoasis/nerd-fonts) such as [Knack (patched version of Hack)](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete.ttf).
+To get Icons to work, use a [nerd-font](https://github.com/ryanoasis/nerd-fonts) such as [Knack (patched version of Hack)](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete.ttf) as your terminal font.
