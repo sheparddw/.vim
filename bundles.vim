@@ -19,7 +19,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'exvim/ex-autocomplpop'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
 
 " Zoom Windows with <C-w>o
@@ -30,6 +30,8 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 " Match Tmux line to Vim Status line
 NeoBundle 'edkolev/tmuxline.vim'
+" Add File Type Icons
+NeoBundle 'ryanoasis/vim-devicons'
 " Git Wrapper
 NeoBundle 'tpope/vim-fugitive'
 
