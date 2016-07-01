@@ -10,6 +10,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Async Updates
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 " provides insert mode auto-completion for quotes, parens, brackets, etc.
 NeoBundle 'Raimondi/delimitMate'
@@ -63,7 +73,9 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'xsbeats/vim-blade'
-NeoBundle 'mxw/vim-jsx'
+NeoBundleLazy 'mxw/vim-jsx', {
+    \   'autoload': {'filetypes': ['javascript']}
+    \ }
 NeoBundle 'Valloric/MatchTagAlways'
 " Auto Close HTML/JSX tags
 NeoBundle 'alvan/vim-closetag'
