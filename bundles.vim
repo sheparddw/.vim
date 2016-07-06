@@ -21,7 +21,10 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 
-" provides insert mode auto-completion for quotes, parens, brackets, etc.
+" Colors:
+NeoBundle 'morhetz/gruvbox'
+
+" Provides insert mode auto-completion for quotes, parens, brackets, etc.
 NeoBundle 'Raimondi/delimitMate'
 " Commenting shortcuts.
 NeoBundle 'scrooloose/nerdcommenter'

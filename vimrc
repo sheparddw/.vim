@@ -2,7 +2,8 @@
 source ~/.vim/bundles.vim
 
 set t_Co=256 " Sets terminal to use 256 colors for CSApprox
-colorscheme PaperColor
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
 set background=dark
 set number " Always show line numbers
 set ruler " Show line number in bottom-right of screen
@@ -100,5 +101,3 @@ let g:airline_powerline_fonts = 1
 " Custom Status (Airline) Options
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_theme='wombat'
-
