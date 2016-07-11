@@ -15,9 +15,12 @@ set nolz " No lazy redraw
 set autochdir " Always cd to the current file's directory
 set hidden " Enable undo history for when you switch buffers from one file to another.
 set scrolloff=1 " Always have at least one line above or below the cursor.
+set softtabstop=0
 set tabstop=4 " Switch tabs to spaces
 set shiftwidth=4
-set expandtab
+set noexpandtab
+set preserveindent
+set copyindent
 set mouse=a " Allow mouse.
 set laststatus=2 " Always show status bar.
 set nofoldenable " Disable Code Folding.
@@ -26,7 +29,7 @@ set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
 
-"Easy escaping to normal model
+" Easy escaping to normal model
 imap jj <esc>
 " Down is really the next line
 nnoremap j gj
