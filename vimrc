@@ -28,6 +28,7 @@ syntax enable " Enable syntax highlighting
 set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
+set clipboard=unnamed " Use the system clipboard (May require Vim 7.4+).
 
 " Easy escaping to normal model
 imap jj <esc>
@@ -36,8 +37,6 @@ nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
 command -bang Q quit<bang>
-" Allow easy copying to system clipboard
-vnoremap <C-c> "*y
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -57,7 +56,7 @@ endif
 " PHP
 let PHP_removeCRwhenUnix = 1
 let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
+let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
 let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 
 " JavaScript
