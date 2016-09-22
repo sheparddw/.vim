@@ -15,9 +15,12 @@ set nolz " No lazy redraw
 set autochdir " Always cd to the current file's directory
 set hidden " Enable undo history for when you switch buffers from one file to another.
 set scrolloff=1 " Always have at least one line above or below the cursor.
+set softtabstop=0
 set tabstop=4 " Switch tabs to spaces
 set shiftwidth=4
-set expandtab
+set noexpandtab
+set preserveindent
+set copyindent
 set mouse=a " Allow mouse.
 set laststatus=2 " Always show status bar.
 set nofoldenable " Disable Code Folding.
@@ -26,15 +29,13 @@ set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
 
-"Easy escaping to normal model
+" Easy escaping to normal model
 imap jj <esc>
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
 command -bang Q quit<bang>
-" Allow easy copying to system clipboard
-vnoremap <C-c> "*y
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -54,7 +55,7 @@ endif
 " PHP
 let PHP_removeCRwhenUnix = 1
 let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
+let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
 let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 
 " JavaScript
