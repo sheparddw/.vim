@@ -15,10 +15,11 @@ set nolz " No lazy redraw
 set autochdir " Always cd to the current file's directory
 set hidden " Enable undo history for when you switch buffers from one file to another.
 set scrolloff=1 " Always have at least one line above or below the cursor.
+set tabstop=4 " Set tab width.
 set softtabstop=0
-set tabstop=4 " Switch tabs to spaces
 set shiftwidth=4
-set noexpandtab
+set noexpandtab " Switch spaces to tabs.
+"set expandtab " Switch tabs to spaces.
 set preserveindent
 set copyindent
 set mouse=a " Allow mouse.
