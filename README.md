@@ -6,7 +6,7 @@ For more information on Vim, see [this wikipedia article](https://en.wikipedia.o
 ## Installation:
 Clone this repository to your home directory:
 ```
-git clone git@github.com:sheparddw/vim.git ~/.vim
+git clone git@github.com:sheparddw/.vim.git ~/.vim
 ```
 Then install NeoBundle (a Vim Plugin Manager):
 ```
