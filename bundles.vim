@@ -75,6 +75,8 @@ NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
+" Use local eslint file instead of global.
+NeoBundle 'mtscout6/syntastic-local-eslint.vim'
 " Templating
 NeoBundle 'xsbeats/vim-blade'
 NeoBundleLazy 'mxw/vim-jsx', {

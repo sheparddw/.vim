@@ -29,6 +29,7 @@ syntax enable " Enable syntax highlighting
 set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
+"set clipboard=unnamed " Use the system clipboard (May require Vim 7.4+).
 
 " Easy escaping to normal model
 imap jj <esc>
@@ -37,6 +38,8 @@ nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
 command -bang Q quit<bang>
+" Allow easy copying to system clipboard.
+vnoremap <C-c> "*y
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -62,7 +65,8 @@ let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 " JavaScript
 " Change tab widths to 2 spaces
 au FileType javascript setl ts=2 sw=2 sts=2
-let g:syntastic_javascript_checkers = ['eslint']
+" Use these linters/sniffers when project includes rc file.
+let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.php"
 let g:mta_filetypes = {
