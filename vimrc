@@ -5,7 +5,8 @@ set t_Co=256 " Sets terminal to use 256 colors for CSApprox
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 set background=dark
-set number " Always show line numbers
+set nonumber " Never show line numbers
+"set number " Always show line numbers
 set ruler " Show line number in bottom-right of screen
 set wrap " Wrap long lines (soft wrap)
 set linebreak " Only wrap on breakat characters
