@@ -21,3 +21,9 @@ You may have to set up a symbolic link to get this vim configuration to work on 
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
 To get Airline Icons to work, use a [nerd-font](https://github.com/ryanoasis/nerd-fonts) such as [Knack (patched version of Hack)](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Knack%20Regular%20Nerd%20Font%20Complete.ttf) as your terminal font.
+
+## Neovim:
+For Neovim, run the following:
+```
+ln -s ~/.vim ~/.config/nvim && ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
+```
