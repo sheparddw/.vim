@@ -82,6 +82,8 @@ let g:mta_filetypes = {
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(^\/vendor|\/\.(git|svn)$)',
     \ }
+" Ignore files in .gitignore
+let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat ~/.agignore && cat ~/.gitignore`"'
 " Disable other specific folders/files when calling CtrlP
 set wildignore+=*/node_modules/**
 set wildignore+=*/public/forum/**
