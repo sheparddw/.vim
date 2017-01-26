@@ -8,11 +8,13 @@ Clone this repository to your home directory:
 ```
 git clone git@github.com:sheparddw/.vim.git ~/.vim
 ```
-Then install NeoBundle (a Vim Plugin Manager):
+Then install Dein (a Vim Plugin Manager):
 ```
-git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh && sh ~/.vim/installer.sh ~/.vim/bundle/ && rm ~/.vim/installer.sh
+# Then within vim run the following:
+:call dein#install()
 ```
-See vimrc file comments for more information on what is included.
+See vimrc and bundles.vim comments for more information on what is included.
 Enjoy.
 
 ## Troubleshooting:
@@ -27,3 +29,4 @@ For Neovim, run the following:
 ```
 ln -s ~/.vim ~/.config/nvim && ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
 ```
+Note that you may have to alter the plugin (~/.vim/bundle) directory for Dein to work with Neovim properly.
