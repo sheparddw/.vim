@@ -1,99 +1,88 @@
-if has('vim_starting')
-    " Be iMproved
-    set nocompatible
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-" Async Updates
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 
+if dein#load_state(expand('~/.vim/bundle'))
+  call dein#begin(expand('~/.vim/bundle'))
 
 "" Appearance:
 " Colors
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'NLKNguyen/papercolor-theme'
+call dein#add( 'morhetz/gruvbox')
+call dein#add( 'NLKNguyen/papercolor-theme')
 " Custom Status Line
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+call dein#add( 'bling/vim-airline')
+call dein#add( 'vim-airline/vim-airline-themes')
 " Match Tmux line to Vim Status line
-NeoBundle 'edkolev/tmuxline.vim'
+call dein#add( 'edkolev/tmuxline.vim')
 " Add File Type Icons
-NeoBundle 'ryanoasis/vim-devicons'
+call dein#add( 'ryanoasis/vim-devicons')
 " Git Wrapper
-NeoBundle 'tpope/vim-fugitive'
+call dein#add( 'tpope/vim-fugitive')
 " Display the indention levels with thin vertical lines
-NeoBundle 'Yggdroot/indentLine'
+call dein#add( 'Yggdroot/indentLine')
 
 
 "" General Customization:
 " Display autocomplete popup while typing.
-NeoBundle 'exvim/ex-autocomplpop'
+call dein#add( 'exvim/ex-autocomplpop')
 " Fuzzy file, buffer, mru, tag, etc finder.
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
+call dein#add( 'ctrlpvim/ctrlp.vim')
+call dein#add( 'tacahiroy/ctrlp-funky')
 " Zoom Windows with <C-w>o
-NeoBundle 'ZoomWin'
+call dein#add( 'ZoomWin')
 " Display your undo history in a graph.
-NeoBundle 'mbbill/undotree'
+call dein#add( 'mbbill/undotree')
 " Plugin for File Tree
-NeoBundle 'scrooloose/nerdtree.git'
+call dein#add( 'scrooloose/nerdtree.git')
 
 "" Indenting
 " Fix indentation issues when pasting.
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
+call dein#add( 'ConradIrwin/vim-bracketed-paste')
 
 "" Syntax
 " General Syntax Helpers
 " Syntax checking hacks for vim
-NeoBundle 'scrooloose/syntastic'
+call dein#add( 'scrooloose/syntastic')
 " Emmet HTML Shorthand
-NeoBundle 'mattn/emmet-vim'
+call dein#add( 'mattn/emmet-vim')
 " Provides insert mode auto-completion for quotes, parens, brackets, etc.
-NeoBundle 'Raimondi/delimitMate'
+call dein#add( 'Raimondi/delimitMate')
 " Commenting shortcuts.
-NeoBundle 'scrooloose/nerdcommenter'
+call dein#add( 'scrooloose/nerdcommenter')
 " HTML
 " Highlight matching tag.
-NeoBundle 'Valloric/MatchTagAlways'
+call dein#add( 'Valloric/MatchTagAlways')
 " Auto Close HTML tags.
-NeoBundle 'alvan/vim-closetag'
+call dein#add( 'alvan/vim-closetag')
 " PHP
-NeoBundle '2072/PHP-Indenting-for-VIm'
-NeoBundle 'StanAngeloff/php.vim'
+call dein#add( '2072/PHP-Indenting-for-VIm')
+call dein#add( 'StanAngeloff/php.vim')
 " JavaScript
-NeoBundle 'elzr/vim-json'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'jelera/vim-javascript-syntax'
+call dein#add( 'elzr/vim-json')
+call dein#add( 'pangloss/vim-javascript')
+call dein#add( 'jelera/vim-javascript-syntax')
 " Use local eslint file instead of global.
-NeoBundle 'mtscout6/syntastic-local-eslint.vim'
+call dein#add( 'mtscout6/syntastic-local-eslint.vim')
 " Templating
-NeoBundle 'xsbeats/vim-blade'
-NeoBundleLazy 'mxw/vim-jsx', {
-    \   'autoload': {'filetypes': ['javascript']}
-    \ }
+call dein#add( 'xsbeats/vim-blade')
+"call dein#add('mxw/vim-jsx', {
+"	\   'autoload': {'filetypes': ['javascript']}
+"	\ })
 
 " Snippet Functionality.
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
+call dein#add( 'MarcWeber/vim-addon-mw-utils')
+call dein#add( 'tomtom/tlib_vim')
 " Snipmate Requires vim-addon-mw-utils and tlib_vim
-NeoBundle 'garbas/vim-snipmate'
-NeoBundle 'honza/vim-snippets'
+call dein#add( 'garbas/vim-snipmate')
+call dein#add( 'honza/vim-snippets')
 
 " Allow Auto-Indenting.
+  call dein#end()
+  call dein#save_state()
+endif
 filetype plugin indent on
+syntax enable
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-NeoBundleCheck
-call neobundle#end()
 
