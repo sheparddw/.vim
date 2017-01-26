@@ -11,9 +11,16 @@ git clone git@github.com:sheparddw/.vim.git ~/.vim
 Then install Dein (a Vim Plugin Manager):
 ```
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/installer.sh && sh ~/.vim/installer.sh ~/.vim/bundle/ && rm ~/.vim/installer.sh
-# Then within vim run the following:
+```
+Then within vim run the following:
+```
 :call dein#install()
 ```
+To update plugins, run the following:
+```
+:call dein#update()
+```
+
 See vimrc and bundles.vim comments for more information on what is included.
 Enjoy.
 
