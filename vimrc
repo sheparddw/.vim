@@ -38,7 +38,9 @@ imap jj <esc>
 nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
-command -bang Q quit<bang>
+command! -bang Q quit<bang>
+" Convert Spaces to Tabs for whole file.
+command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 " Allow easy copying to system clipboard.
 vnoremap <C-c> "*y
 " With a map leader it's possible to do extra key combinations

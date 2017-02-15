@@ -66,6 +66,8 @@ call dein#add( 'jelera/vim-javascript-syntax')
 call dein#add( 'mtscout6/syntastic-local-eslint.vim')
 " Templating
 call dein#add( 'xsbeats/vim-blade')
+" Debugging
+call dein#add( 'joonty/vdebug')
 "call dein#add('mxw/vim-jsx', {
 "	\   'autoload': {'filetypes': ['javascript']}
 "	\ })
