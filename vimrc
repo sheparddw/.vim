@@ -70,7 +70,7 @@ let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 
 " JavaScript
 " Change tab widths to 2 spaces
-au FileType javascript setl ts=2 sw=2 sts=2
+"au FileType javascript setl ts=2 sw=2 sts=2
 " Use these linters/sniffers when project includes rc file.
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:jsx_ext_required = 0
