@@ -14,7 +14,7 @@ set linebreak " Only wrap on breakat characters
 set backspace=indent,eol,start " Solve backspace problems
 set nolist " List disables linebreak
 set nolz " No lazy redraw
-set autochdir " Always cd to the current file's directory
+" set autochdir " Always cd to the current file's directory
 set hidden " Enable undo history for when you switch buffers from one file to another.
 set scrolloff=1 " Always have at least one line above or below the cursor.
 set tabstop=4 " Set tab width.
@@ -96,6 +96,7 @@ let g:ctrlp_root_markers = [ 'vendor' ]
 let g:ctrlp_match_window = 'max:20'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_working_path_mode = 0
 map <D-p> :CtrlP<cr>
 
 " NerdTree
