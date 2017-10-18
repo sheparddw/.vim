@@ -31,6 +31,8 @@ syntax enable " Enable syntax highlighting
 set incsearch " Go to search while typing.
 set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
+set exrc " Load project specific vimrcs (for example, spaces versus tabs per project).
+set secure " Prevent unwanted scripts from running in project vimrcs.
 "set clipboard=unnamed " Use the system clipboard (May require Vim 7.4+).
 
 " Easy escaping to normal model
