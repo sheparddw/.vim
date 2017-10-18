@@ -2,6 +2,7 @@
 source ~/.vim/bundles.vim
 
 set t_Co=256 " Sets terminal to use 256 colors for CSApprox
+set nocompatible " No compatibility with vi to prevent plugin errors.
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 set background=dark
