@@ -6,6 +6,9 @@ set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 if dein#load_state(expand('~/.vim/bundle'))
   call dein#begin(expand('~/.vim/bundle'))
 
+" Add UI for Dein Updating.
+call dein#add('wsdjeg/dein-ui.vim')
+
 "" Appearance:
 " Colors
 call dein#add( 'morhetz/gruvbox')
@@ -21,7 +24,8 @@ call dein#add( 'ryanoasis/vim-devicons')
 call dein#add( 'tpope/vim-fugitive')
 " Display the indention levels with thin vertical lines
 call dein#add( 'Yggdroot/indentLine')
-
+" Auto remove comments upon double enter
+call dein#add( 'Osse/double-tap')
 
 "" General Customization:
 " Display autocomplete popup while typing.
