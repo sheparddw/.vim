@@ -83,12 +83,9 @@ call dein#add( 'tomtom/tlib_vim')
 call dein#add( 'garbas/vim-snipmate')
 call dein#add( 'honza/vim-snippets')
 
-" Allow Auto-Indenting.
   call dein#end()
   call dein#save_state()
 endif
+" Allow Auto-Indenting.
 filetype plugin indent on
 syntax enable
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-
