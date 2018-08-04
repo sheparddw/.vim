@@ -34,7 +34,7 @@ call dein#add( 'exvim/ex-autocomplpop')
 call dein#add( 'ctrlpvim/ctrlp.vim')
 call dein#add( 'tacahiroy/ctrlp-funky')
 " Zoom Windows with <C-w>o
-call dein#add( 'ZoomWin')
+call dein#add( 'vim-scripts/ZoomWin')
 " Display your undo history in a graph.
 call dein#add( 'mbbill/undotree')
 " Plugin for File Tree
