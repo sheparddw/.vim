@@ -36,4 +36,3 @@ For Neovim, run the following:
 ```
 ln -s ~/.vim ~/.config/nvim && ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
 ```
-Note that you may have to alter the plugin (~/.vim/bundle) directory for Dein to work with Neovim properly.
