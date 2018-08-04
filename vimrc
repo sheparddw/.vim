@@ -83,12 +83,10 @@ let g:mta_filetypes = {
     \}
 
 " Ctrl-P settings
-" Ignore .git and .svn directories, the vendor folder, .csv and .log files
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(^\/vendor|\/\.(git|svn)$)',
-    \ }
-" Ignore files in .gitignore
-let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat ~/.agignore ~/.gitignore`"'
+" Use ag instead of grep for ctrlp.
+let g:ctrlp_user_command = 'ag %s -i --nogroup -g ""'
+" Ag is fast enough, you can remove caching.
+let g:ctrlp_use_caching = 0
 " Disable other specific folders/files when calling CtrlP
 set wildignore+=*/node_modules/**
 set wildignore+=*/public/forum/**
