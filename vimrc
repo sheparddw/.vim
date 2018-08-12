@@ -64,15 +64,22 @@ endif
 
 " PHP
 let PHP_removeCRwhenUnix = 1
-let g:syntastic_php_checkers = ['php','phpcs']
-let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
-let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
+"let g:syntastic_php_checkers = ['php','phpcs']
+let g:ale_linters = {
+\	'php': ['php','phpcs'],
+\	'javascript': ['eslint', 'jshint']
+\}
+let g:ale_php_phpcs_options="--standard=WordPress -n --report=csv"
+" Only lint on save (to conserve battery life on laptops).
+let g:ale_lint_on_text_changed = 'never'
+
+"let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
+"let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
 
 " JavaScript
 " Change tab widths to 2 spaces
 "au FileType javascript setl ts=2 sw=2 sts=2
 " Use these linters/sniffers when project includes rc file.
-let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.php"
 let g:mta_filetypes = {
@@ -114,3 +121,5 @@ let g:airline_powerline_fonts = 1
 " Custom Status (Airline) Options
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
+" Configure Ale with airline.
+let g:airline#extensions#ale#enabled = 1

@@ -47,7 +47,8 @@ call dein#add( 'ConradIrwin/vim-bracketed-paste')
 "" Syntax
 " General Syntax Helpers
 " Syntax checking hacks for vim
-call dein#add( 'scrooloose/syntastic')
+"call dein#add( 'scrooloose/syntastic')
+call dein#add( 'w0rp/ale')
 " Emmet HTML Shorthand
 call dein#add( 'mattn/emmet-vim')
 " Provides insert mode auto-completion for quotes, parens, brackets, etc.
