@@ -62,13 +62,15 @@ endif
 
 " Plugin Settings:
 
-" PHP
-let PHP_removeCRwhenUnix = 1
-"let g:syntastic_php_checkers = ['php','phpcs']
+" Linting
 let g:ale_linters = {
 \	'php': ['php','phpcs'],
 \	'javascript': ['eslint', 'jshint']
 \}
+
+" PHP
+"let g:syntastic_php_checkers = ['php','phpcs']
+let PHP_removeCRwhenUnix = 1
 let g:ale_php_phpcs_options="--standard=WordPress -n --report=csv"
 " Only lint on save (to conserve battery life on laptops).
 let g:ale_lint_on_text_changed = 'never'
