@@ -71,7 +71,7 @@ let g:ale_linters = {
 " PHP
 "let g:syntastic_php_checkers = ['php','phpcs']
 let PHP_removeCRwhenUnix = 1
-let g:ale_php_phpcs_options="--standard=WordPress -n --report=csv"
+let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard -n --report=csv"
 " Only lint on save (to conserve battery life on laptops).
 let g:ale_lint_on_text_changed = 'never'
 
@@ -113,6 +113,9 @@ map <D-p> :CtrlP<cr>
 nmap <leader>nt :NERDTreeToggle<cr>
 " Fix bug with navigation issues in Nerdtree
 set encoding=utf-8
+
+" Split to new tab (to open at full size).
+nmap <leader>z :tab split<cr>
 
 " DelimitMate
 " Auto insert new line for brackets etc.
