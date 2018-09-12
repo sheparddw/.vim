@@ -31,8 +31,9 @@ call dein#add( 'Osse/double-tap')
 " Display autocomplete popup while typing.
 call dein#add( 'exvim/ex-autocomplpop')
 " Fuzzy file, buffer, mru, tag, etc finder.
-call dein#add( 'ctrlpvim/ctrlp.vim')
-call dein#add( 'tacahiroy/ctrlp-funky')
+"call dein#add( 'ctrlpvim/ctrlp.vim')
+"call dein#add( 'tacahiroy/ctrlp-funky')
+call dein#add( '/usr/local/opt/fzf' )
 " Display your undo history in a graph.
 call dein#add( 'mbbill/undotree')
 " Plugin for File Tree

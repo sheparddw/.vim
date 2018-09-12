@@ -93,20 +93,21 @@ let g:mta_filetypes = {
 
 " Ctrl-P settings
 " Use ag instead of grep for ctrlp.
-let g:ctrlp_user_command = 'ag %s -i --nogroup -g ""'
-" Ag is fast enough, you can remove caching.
-let g:ctrlp_use_caching = 0
-" Disable other specific folders/files when calling CtrlP
-set wildignore+=*/node_modules/**
-set wildignore+=*/public/forum/**
-" Set the root marker to 'vendor' (this is how it knows what the root of the project is
-let g:ctrlp_root_markers = [ 'vendor' ]
-" Set the max-height
-let g:ctrlp_match_window = 'max:20'
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_working_path_mode = 0
-map <D-p> :CtrlP<cr>
+"let g:ctrlp_user_command = 'ag %s -i --nogroup -g ""'
+"" Ag is fast enough, you can remove caching.
+"let g:ctrlp_use_caching = 0
+"" Disable other specific folders/files when calling CtrlP
+"set wildignore+=*/node_modules/**
+"set wildignore+=*/public/forum/**
+"" Set the root marker to 'vendor' (this is how it knows what the root of the project is
+"let g:ctrlp_root_markers = [ 'vendor' ]
+"" Set the max-height
+"let g:ctrlp_match_window = 'max:20'
+"let g:ctrlp_extensions = ['funky']
+"let g:ctrlp_funky_syntax_highlight = 1
+"let g:ctrlp_working_path_mode = 0
+"map <D-p> :CtrlP<cr>
+nnoremap <C-p> :FZF<cr>
 
 " NerdTree
 " Map NerdTree for easy file navigation
