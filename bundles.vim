@@ -29,7 +29,11 @@ call dein#add( 'Osse/double-tap')
 
 "" General Customization:
 " Display autocomplete popup while typing.
-call dein#add( 'exvim/ex-autocomplpop')
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
 " Fuzzy file, buffer, mru, tag, etc finder.
 "call dein#add( 'ctrlpvim/ctrlp.vim')
 "call dein#add( 'tacahiroy/ctrlp-funky')
@@ -71,10 +75,10 @@ call dein#add( 'mtscout6/syntastic-local-eslint.vim')
 " Templating
 call dein#add( 'xsbeats/vim-blade')
 " Debugging
-call dein#add( 'joonty/vdebug')
-"call dein#add('mxw/vim-jsx', {
-"	\   'autoload': {'filetypes': ['javascript']}
-"	\ })
+call dein#add( 'vim-vdebug/vdebug')
+call dein#add('mxw/vim-jsx', {
+	\   'autoload': {'filetypes': ['javascript']}
+	\ })
 
 " Snippet Functionality.
 call dein#add( 'MarcWeber/vim-addon-mw-utils')

@@ -42,6 +42,7 @@ nnoremap j gj
 nnoremap k gk
 " Prevent error with :Q instead of :q
 command! -bang Q quit<bang>
+command! -bang Edit edit<bang>
 " Convert Spaces to Tabs for whole file.
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 " Allow easy copying to system clipboard.
@@ -64,16 +65,24 @@ endif
 
 " Linting
 let g:ale_linters = {
-\	'php': ['php','phpcs'],
-\	'javascript': ['eslint', 'jshint']
+\	'php': ['php'],
+\	'javascript': ['eslint', 'jshint'],
+\	'scss': ['stylelint']
 \}
 
 " PHP
 "let g:syntastic_php_checkers = ['php','phpcs']
 let PHP_removeCRwhenUnix = 1
-let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard -n --report=csv"
+"let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard -n --report=csv"
 " Only lint on save (to conserve battery life on laptops).
 let g:ale_lint_on_text_changed = 'never'
+
+" Vdebug options for debugging PHP.
+if !exists('g:vdebug_options')
+  let g:vdebug_options = {}
+endif
+" Break on first line of file.
+let g:vdebug_options.break_on_open = 0
 
 "let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
 "let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
@@ -90,6 +99,14 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'javascript' : 1,
     \}
+
+
+" Autocomplete on typing.
+let g:deoplete#enable_at_startup = 1
+
+" Disable indentline for json as it conceals double quotes.
+let g:indentLine_fileTypeExclude = ['json']
+set conceallevel=0 " Do not conceal double quotes in JSON, etc.
 
 " Ctrl-P settings
 " Use ag instead of grep for ctrlp.
