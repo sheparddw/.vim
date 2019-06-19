@@ -100,9 +100,17 @@ let g:mta_filetypes = {
     \ 'javascript' : 1,
     \}
 
+" Emmet JSX Support.
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\}
 
 " Autocomplete on typing.
 let g:deoplete#enable_at_startup = 1
+set completeopt+=noinsert
 
 " Disable indentline for json as it conceals double quotes.
 let g:indentLine_fileTypeExclude = ['json']

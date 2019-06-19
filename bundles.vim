@@ -34,6 +34,8 @@ if !has('nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
 endif
+call dein#add('Shougo/neco-syntax')
+call dein#add('carlitux/deoplete-ternjs')
 " Fuzzy file, buffer, mru, tag, etc finder.
 "call dein#add( 'ctrlpvim/ctrlp.vim')
 "call dein#add( 'tacahiroy/ctrlp-funky')
