@@ -40,14 +40,11 @@ call dein#add('carlitux/deoplete-ternjs')
 "call dein#add( 'ctrlpvim/ctrlp.vim')
 "call dein#add( 'tacahiroy/ctrlp-funky')
 call dein#add( '/usr/local/opt/fzf' )
+
 " Display your undo history in a graph.
 call dein#add( 'mbbill/undotree')
 " Plugin for File Tree
 call dein#add( 'scrooloose/nerdtree.git')
-
-"" Indenting
-" Fix indentation issues when pasting.
-call dein#add( 'ConradIrwin/vim-bracketed-paste')
 
 "" Syntax
 " General Syntax Helpers

@@ -60,6 +60,24 @@ if has("persistent_undo")
     set undodir=$HOME/.vim/undodir/
 endif
 
+" Auto Paste modes:
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+if &term =~ '^tmux'
+  let &t_BE="\<Esc>[?2004h"
+  let &t_BD="\<Esc>[?2004l"
+  let &t_PS="\<Esc>[200~"
+  let &t_PE="\<Esc>[201~"
+endif
+ 
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+ 
+function! XTermPasteBegin()
+set pastetoggle=<Esc>[201~
+set paste
+return ""
+endfunction
+
 
 " Plugin Settings:
 
@@ -69,13 +87,19 @@ let g:ale_linters = {
 \	'javascript': ['eslint', 'jshint'],
 \	'scss': ['stylelint']
 \}
+let g:ale_fixers = {
+\	'javascript': ['prettier_eslint'],
+\	'html': ['eslint'],
+\	'scss': ['stylelint']
+\}
+let g:ale_lint_on_text_changed = 'never'
+nmap <leader>f :ALEFix<cr>
 
 " PHP
 "let g:syntastic_php_checkers = ['php','phpcs']
 let PHP_removeCRwhenUnix = 1
 "let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard -n --report=csv"
 " Only lint on save (to conserve battery life on laptops).
-let g:ale_lint_on_text_changed = 'never'
 
 " Vdebug options for debugging PHP.
 if !exists('g:vdebug_options')
@@ -116,23 +140,7 @@ set completeopt+=noinsert
 let g:indentLine_fileTypeExclude = ['json']
 set conceallevel=0 " Do not conceal double quotes in JSON, etc.
 
-" Ctrl-P settings
-" Use ag instead of grep for ctrlp.
-"let g:ctrlp_user_command = 'ag %s -i --nogroup -g ""'
-"" Ag is fast enough, you can remove caching.
-"let g:ctrlp_use_caching = 0
-"" Disable other specific folders/files when calling CtrlP
-"set wildignore+=*/node_modules/**
-"set wildignore+=*/public/forum/**
-"" Set the root marker to 'vendor' (this is how it knows what the root of the project is
-"let g:ctrlp_root_markers = [ 'vendor' ]
-"" Set the max-height
-"let g:ctrlp_match_window = 'max:20'
-"let g:ctrlp_extensions = ['funky']
-"let g:ctrlp_funky_syntax_highlight = 1
-"let g:ctrlp_working_path_mode = 0
-"map <D-p> :CtrlP<cr>
-nnoremap <C-p> :FZF<cr>
+nnoremap <C-p> :FZF <cr>
 
 " NerdTree
 " Map NerdTree for easy file navigation
