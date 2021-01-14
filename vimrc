@@ -88,7 +88,7 @@ let g:ale_linters = {
 \	'scss': ['stylelint']
 \}
 let g:ale_fixers = {
-\	'javascript': ['prettier_eslint'],
+\	'javascript': ['eslint'],
 \	'html': ['eslint'],
 \	'scss': ['stylelint']
 \}
@@ -134,6 +134,8 @@ let g:user_emmet_settings = {
 
 " Autocomplete on typing.
 let g:deoplete#enable_at_startup = 1
+" Fix multithread error.
+call deoplete#custom#option('num_processes', 4)
 set completeopt+=noinsert
 
 " Disable indentline for json as it conceals double quotes.
