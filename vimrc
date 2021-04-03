@@ -83,22 +83,22 @@ endfunction
 
 " Linting
 let g:ale_linters = {
-\	'php': ['php'],
+\	'php': ['php','phpcs'],
 \	'javascript': ['eslint', 'jshint'],
 \	'scss': ['stylelint']
 \}
 let g:ale_fixers = {
+\	'php': ['phpcbf'],
 \	'javascript': ['eslint'],
 \	'html': ['eslint'],
 \	'scss': ['stylelint']
 \}
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_scss_stylelint_use_local_config = 1
 nmap <leader>f :ALEFix<cr>
 
 " PHP
-"let g:syntastic_php_checkers = ['php','phpcs']
 let PHP_removeCRwhenUnix = 1
-"let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard -n --report=csv"
 " Only lint on save (to conserve battery life on laptops).
 
 " Vdebug options for debugging PHP.
@@ -108,8 +108,8 @@ endif
 " Break on first line of file.
 let g:vdebug_options.break_on_open = 0
 
-"let g:syntastic_php_phpcs_args="--standard=WordPress -n --report=csv"
-"let g:syntastic_php_phpcs_exec="~/.composer/vendor/bin/phpcs"
+let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard"
+let g:ale_php_phpcbf_options="--standard=Wpmudev-Plugins-Standard"
 
 " JavaScript
 " Change tab widths to 2 spaces
