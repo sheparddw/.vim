@@ -20,8 +20,8 @@ set scrolloff=1 " Always have at least one line above or below the cursor.
 set tabstop=4 " Set tab width.
 set softtabstop=0
 set shiftwidth=4
-set noexpandtab " Switch spaces to tabs.
-"set expandtab " Switch tabs to spaces.
+"set noexpandtab " Switch spaces to tabs.
+set expandtab " Switch tabs to spaces.
 set preserveindent
 set copyindent
 set mouse=a " Allow mouse.
@@ -33,6 +33,7 @@ set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
 set exrc " Load project specific vimrcs (for example, spaces versus tabs per project).
 set secure " Prevent unwanted scripts from running in project vimrcs.
+"set updatetime=750
 "set clipboard=unnamed " Use the system clipboard (May require Vim 7.4+).
 
 " Easy escaping to normal model
@@ -85,35 +86,113 @@ endfunction
 let g:ale_linters = {
 \	'php': ['php','phpcs'],
 \	'javascript': ['eslint', 'jshint'],
+\	'typescript': ['eslint'],
 \	'scss': ['stylelint']
 \}
 let g:ale_fixers = {
 \	'php': ['phpcbf'],
 \	'javascript': ['eslint'],
+\	'typescript': ['eslint', 'prettier'],
+\	'typescriptreact': ['eslint', 'prettier'],
+\	'mdx': ['prettier'],
 \	'html': ['eslint'],
 \	'scss': ['stylelint']
 \}
-let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 'normal'
 let g:ale_scss_stylelint_use_local_config = 1
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+let g:ale_fixer_aliases = {'typescriptreact': 'typescript'}
 nmap <leader>f :ALEFix<cr>
+
+" LSP
+" highlight symbol under cursor
+autocmd CursorHold  <buffer> silent! lua vim.lsp.buf.document_highlight()
+autocmd CursorHoldI <buffer> silent! lua vim.lsp.buf.document_highlight()
+autocmd CursorMoved <buffer> silent! lua vim.lsp.buf.clear_references()
+
+" completion
+set completeopt=menuone,noselect
+set shortmess=filnxtToOFAc
+
+" mappings
+" See `:help vim.lsp.*` for documentation on any of the below functions
+nnoremap <silent> <c-]>       <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> gD          <cmd>lua vim.lsp.buf.implementation()<cr>
+nnoremap <silent> 1gD         <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap <silent> gn          <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap <silent> g0          <cmd>lua vim.lsp.buf.document_symbol()<cr>
+nnoremap <silent> gW          <cmd>lua vim.lsp.buf.workspace_symbol()<cr>
+nnoremap <silent> ga          <cmd>lua vim.lsp.buf.code_action()<cr>
+vnoremap <silent> ga          :<c-u>lua vim.lsp.buf.range_code_action()<cr>
+nnoremap <silent> <c-J>       <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
+nnoremap <silent> H           <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap <silent> L           <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+inoremap <silent> <c-s>       <cmd>lua vim.lsp.buf.signature_help()<cr>
+
+sign define LspDiagnosticsSignError       text=ee texthl=LspDiagnosticsSignError
+sign define LspDiagnosticsSignWarning     text=ww texthl=LspDiagnosticsSignWarning
+sign define LspDiagnosticsSignInformation text=ii texthl=LspDiagnosticsSignInformation
+sign define LspDiagnosticsSignHint        text=hh texthl=LspDiagnosticsSignHint
+
+highlight link LspDiagnosticsFloatingError LspDiagnosticsFloatingError
+highlight link NormalFloat Pmenu
+
+highlight def link LspReference  CursorLine
+highlight def link LspReferenceText CursorLine
+highlight def link LspReferenceWrite CursorLine
+highlight def link LspReferenceRead CursorLine
+
+" CoC
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " PHP
 let PHP_removeCRwhenUnix = 1
 " Only lint on save (to conserve battery life on laptops).
 
 " Vdebug options for debugging PHP.
-if !exists('g:vdebug_options')
-  let g:vdebug_options = {}
-endif
+"if !exists('g:vdebug_options')
+  "let g:vdebug_options = {}
+"endif
 " Break on first line of file.
-let g:vdebug_options.break_on_open = 0
+"let g:vdebug_options.break_on_open = 0
 
 let g:ale_php_phpcs_options="--standard=Wpmudev-Plugins-Standard"
 let g:ale_php_phpcbf_options="--standard=Wpmudev-Plugins-Standard"
 
 " JavaScript
 " Change tab widths to 2 spaces
-"au FileType javascript setl ts=2 sw=2 sts=2
+au FileType javascript setl ts=2 sw=2 sts=2
 " Use these linters/sniffers when project includes rc file.
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.php"
@@ -133,9 +212,9 @@ let g:user_emmet_settings = {
 \}
 
 " Autocomplete on typing.
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 " Fix multithread error.
-call deoplete#custom#option('num_processes', 4)
+"call deoplete#custom#option('num_processes', 4)
 set completeopt+=noinsert
 
 " Disable indentline for json as it conceals double quotes.
