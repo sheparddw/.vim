@@ -17,9 +17,9 @@ set nolz " No lazy redraw
 " set autochdir " Always cd to the current file's directory
 set hidden " Enable undo history for when you switch buffers from one file to another.
 set scrolloff=1 " Always have at least one line above or below the cursor.
-set tabstop=4 " Set tab width.
+set tabstop=2 " Set tab width.
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 "set noexpandtab " Switch spaces to tabs.
 set expandtab " Switch tabs to spaces.
 set preserveindent
@@ -33,6 +33,7 @@ set ignorecase " Searches are case insensitive unless uppercase is used.
 set smartcase
 set exrc " Load project specific vimrcs (for example, spaces versus tabs per project).
 set secure " Prevent unwanted scripts from running in project vimrcs.
+autocmd VimResized * wincmd =
 "set updatetime=750
 "set clipboard=unnamed " Use the system clipboard (May require Vim 7.4+).
 
@@ -103,6 +104,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_scss_stylelint_use_local_config = 1
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 let g:ale_fixer_aliases = {'typescriptreact': 'typescript'}
+let g:ale_fix_on_save = 1
+let g:ale_completion_autoimport = 1
 nmap <leader>f :ALEFix<cr>
 
 " LSP

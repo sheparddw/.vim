@@ -55,6 +55,8 @@ call dein#add( 'mbbill/undotree')
 " Plugin for File Tree
 call dein#add( 'scrooloose/nerdtree.git')
 
+call dein#add( 'dominikduda/vim_current_word' )
+
 "" Syntax
 " General Syntax Helpers
 " Syntax checking hacks for vim
