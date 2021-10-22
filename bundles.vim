@@ -26,6 +26,8 @@ call dein#add( 'edkolev/tmuxline.vim')
 call dein#add( 'ryanoasis/vim-devicons')
 " Git Wrapper
 call dein#add( 'tpope/vim-fugitive')
+" Git Blame
+call dein#add( 'APZelos/blamer.nvim')
 " Display the indention levels with thin vertical lines
 call dein#add( 'Yggdroot/indentLine')
 " Auto remove comments upon double enter
