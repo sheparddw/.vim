@@ -96,6 +96,8 @@ call dein#add('mxw/vim-jsx', {
 call dein#add('ianks/vim-tsx')
 call dein#add('leafgarland/typescript-vim')
 
+call dein#add('github/copilot.vim')
+
 " Snippet Functionality.
 call dein#add( 'MarcWeber/vim-addon-mw-utils')
 call dein#add( 'tomtom/tlib_vim')
