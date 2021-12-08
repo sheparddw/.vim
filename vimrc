@@ -49,6 +49,8 @@ command! -bang Edit edit<bang>
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 " Allow easy copying to system clipboard.
 vnoremap <C-c> "*y
+nnoremap ,cp :let @+=expand("%:p")<CR>
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
