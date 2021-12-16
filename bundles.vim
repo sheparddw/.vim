@@ -48,9 +48,10 @@ call dein#add('Shougo/neco-syntax')
 " Fuzzy file, buffer, mru, tag, etc finder.
 "call dein#add( 'ctrlpvim/ctrlp.vim')
 "call dein#add( 'tacahiroy/ctrlp-funky')
-call dein#add( '/usr/local/opt/fzf/' )
-"call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
-"call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+call dein#add( 'nvim-lua/plenary.nvim' )
+call dein#add( 'nvim-telescope/telescope.nvim' )
+call dein#add( 'nvim-telescope/telescope-fzf-native.nvim', { 'hook_post_update': 'make' } )
+call dein#add( 'kyazdani42/nvim-web-devicons' )
 
 " Display your undo history in a graph.
 call dein#add( 'mbbill/undotree')
@@ -90,6 +91,7 @@ call dein#add( 'mtscout6/syntastic-local-eslint.vim')
 call dein#add( 'xsbeats/vim-blade')
 " Debugging
 "call dein#add( 'vim-vdebug/vdebug')
+
 call dein#add('mxw/vim-jsx', {
 	\   'autoload': {'filetypes': ['javascript']}
 	\ })

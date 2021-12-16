@@ -49,6 +49,7 @@ command! -bang Edit edit<bang>
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 " Allow easy copying to system clipboard.
 vnoremap <C-c> "*y
+" Copy file path to clipboard
 nnoremap ,cp :let @+=expand("%:p")<CR>
 
 " With a map leader it's possible to do extra key combinations
@@ -229,7 +230,9 @@ set completeopt+=noinsert
 let g:indentLine_fileTypeExclude = ['json']
 set conceallevel=0 " Do not conceal double quotes in JSON, etc.
 
-nnoremap <C-p> :FZF <cr>
+" Telescope fuzzy finder.
+" Requires BurntSushi/ripgrep.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 
 " NerdTree
 " Map NerdTree for easy file navigation
