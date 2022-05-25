@@ -176,6 +176,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Git Blame enable.
 let g:blamer_enabled = 1
 
+" Enable Git Linker (quickly copying a github/gitlab link to clipboard).
+lua << EOF
+require"gitlinker".setup()
+EOF
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.

@@ -18,7 +18,7 @@ call dein#add( 'neovim/nvim-lspconfig')
 call dein#add( 'morhetz/gruvbox')
 call dein#add( 'NLKNguyen/papercolor-theme')
 " Custom Status Line
-call dein#add( 'bling/vim-airline')
+call dein#add( 'vim-airline/vim-airline')
 call dein#add( 'vim-airline/vim-airline-themes')
 " Match Tmux line to Vim Status line
 call dein#add( 'edkolev/tmuxline.vim')
@@ -26,6 +26,8 @@ call dein#add( 'edkolev/tmuxline.vim')
 call dein#add( 'ryanoasis/vim-devicons')
 " Git Wrapper
 call dein#add( 'tpope/vim-fugitive')
+" Git Linking
+call dein#add( 'ruifm/gitlinker.nvim' )
 " Git Blame
 call dein#add( 'APZelos/blamer.nvim')
 " Display the indention levels with thin vertical lines
