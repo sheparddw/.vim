@@ -12,6 +12,11 @@ call dein#add('wsdjeg/dein-ui.vim')
 " LSP support
 call dein#add('neovim/nvim-lsp')
 call dein#add( 'neovim/nvim-lspconfig')
+call dein#add( 'kosayoda/nvim-lightbulb' )
+
+" Dev Containers
+call dein#add( 'nvim-treesitter/nvim-treesitter')
+call dein#add( 'https://codeberg.org/esensar/nvim-dev-container')
 
 "" Appearance:
 " Colors
@@ -100,7 +105,13 @@ call dein#add('mxw/vim-jsx', {
 call dein#add('ianks/vim-tsx')
 call dein#add('leafgarland/typescript-vim')
 
-"call dein#add('github/copilot.vim')
+call dein#add('github/copilot.vim')
+
+" ChatGPT
+call dein#add('madox2/vim-ai')
+
+call dein#add('MunifTanjim/nui.nvim')
+call dein#add('dpayne/CodeGPT.nvim')
 
 " Snippet Functionality.
 call dein#add( 'MarcWeber/vim-addon-mw-utils')

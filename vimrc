@@ -7,7 +7,7 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 set background=dark
 set nonumber " Never show line numbers
-"set number " Always show line numbers
+set number " Always show line numbers
 set ruler " Show line number in bottom-right of screen
 set wrap " Wrap long lines (soft wrap)
 set linebreak " Only wrap on breakat characters
@@ -95,6 +95,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \	'php': ['phpcbf'],
+\	'python': ['black', 'isort'],
 \	'javascript': ['eslint'],
 \	'typescript': ['eslint', 'prettier'],
 \	'typescriptreact': ['eslint', 'prettier'],
@@ -102,6 +103,9 @@ let g:ale_fixers = {
 \	'html': ['eslint'],
 \	'scss': ['stylelint']
 \}
+"let g:ale_linters_ignore = {
+      "\   'python': ['pyright'],
+      "\}
 "let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_scss_stylelint_use_local_config = 1
@@ -109,6 +113,9 @@ let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 let g:ale_fixer_aliases = {'typescriptreact': 'typescript'}
 let g:ale_fix_on_save = 1
 let g:ale_completion_autoimport = 1
+" Disable auto-detection of virtualenvironments
+let g:ale_virtualenv_dir_names = ['.venv']
+" Environment variable ${VIRTUAL_ENV} is always used
 nmap <leader>f :ALEFix<cr>
 
 " LSP
@@ -179,6 +186,7 @@ let g:blamer_enabled = 1
 " Enable Git Linker (quickly copying a github/gitlab link to clipboard).
 lua << EOF
 require"gitlinker".setup()
+require("devcontainer").setup{}
 EOF
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -244,6 +252,7 @@ nnoremap <C-p> <cmd>Telescope find_files<cr>
 nmap <leader>nt :NERDTreeToggle<cr>
 " Fix bug with navigation issues in Nerdtree
 set encoding=utf-8
+let NERDTreeAutoDeleteBuffer=0
 
 " Split to new tab (to open at full size).
 nmap <leader>z :tab split<cr>
@@ -259,3 +268,18 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 " Configure Ale with airline.
 let g:airline#extensions#ale#enabled = 1
+
+" Vim-Ai
+nnoremap <leader>a :Chat 
+xnoremap <leader>a :Chat 
+nnoremap <leader>g :AIChat 
+xnoremap <leader>g :AIChat 
+:lua << END
+  vim.g["codegpt_openai_api_key"] = os.getenv("OPENAI_API_KEY")
+  vim.g["codegpt_chat_completions_url"] = "https://api.openai.com/v1/chat/completions"
+  vim.g["codegpt_commands_defaults"] = {
+    ["completion"] = {
+      ["model"] = "gpt-4"
+    }
+  }
+END
