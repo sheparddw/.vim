@@ -6,7 +6,7 @@ set nocompatible " No compatibility with vi to prevent plugin errors.
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 set background=dark
-set nonumber " Never show line numbers
+" set nonumber " Never show line numbers
 set number " Always show line numbers
 set ruler " Show line number in bottom-right of screen
 set wrap " Wrap long lines (soft wrap)
@@ -131,6 +131,7 @@ set shortmess=filnxtToOFAc
 " mappings
 " See `:help vim.lsp.*` for documentation on any of the below functions
 nnoremap <silent> <c-]>       <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> gd       <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> gD          <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> 1gD         <cmd>lua vim.lsp.buf.type_definition()<cr>
@@ -138,6 +139,7 @@ nnoremap <silent> gn          <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> g0          <cmd>lua vim.lsp.buf.document_symbol()<cr>
 nnoremap <silent> gW          <cmd>lua vim.lsp.buf.workspace_symbol()<cr>
 nnoremap <silent> ga          <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap <leader>ac          <cmd>lua vim.lsp.buf.code_action()<cr>
 vnoremap <silent> ga          :<c-u>lua vim.lsp.buf.range_code_action()<cr>
 nnoremap <silent> <c-J>       <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
 nnoremap <silent> H           <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
@@ -158,26 +160,26 @@ highlight def link LspReferenceWrite CursorLine
 highlight def link LspReferenceRead CursorLine
 
 " CoC
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+" map <silent> gd <Plug>(coc-definition)
+" map <silent> gy <Plug>(coc-type-definition)
+" map <silent> gi <Plug>(coc-implementation)
+" map <silent> gr <Plug>(coc-references)
+" map <leader>rn <Plug>(coc-rename)
+"  Remap keys for applying codeAction to the current buffer.
+" map <leader>ac  <Plug>(coc-codeaction)
+"  Apply AutoFix to problem on the current line.
+" map <leader>qf  <Plug>(coc-fix-current)
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+" f has('nvim-0.4.0') || has('patch-8.2.0750')
+"  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+"  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+"  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" ndif
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 " Git Blame enable.
@@ -247,12 +249,11 @@ set conceallevel=0 " Do not conceal double quotes in JSON, etc.
 " Requires BurntSushi/ripgrep.
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 
-" NerdTree
-" Map NerdTree for easy file navigation
-nmap <leader>nt :NERDTreeToggle<cr>
-" Fix bug with navigation issues in Nerdtree
+" NvimTree
+" Map NvimTree for easy file navigation
+" nmap <leader>nt :NERDTreeToggle<cr>
+nmap <leader>nt :NvimTreeToggle<cr>
 set encoding=utf-8
-let NERDTreeAutoDeleteBuffer=0
 
 " Split to new tab (to open at full size).
 nmap <leader>z :tab split<cr>
@@ -268,10 +269,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 " Configure Ale with airline.
 let g:airline#extensions#ale#enabled = 1
+let g:airline_theme="base16_gruvbox_dark_pale"
 
 " Vim-Ai
-nnoremap <leader>a :Chat 
-xnoremap <leader>a :Chat 
+nnoremap <leader>ai :Chat 
+xnoremap <leader>ai :Chat 
 nnoremap <leader>g :AIChat 
 xnoremap <leader>g :AIChat 
 :lua << END

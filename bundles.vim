@@ -1,128 +1,112 @@
-if &compatible
-  set nocompatible
-endif
-set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+:lua << END
 
-if dein#load_state(expand('~/.vim/bundle'))
-  call dein#begin(expand('~/.vim/bundle'))
+-- Plugin manager
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-" Add UI for Dein Updating.
-call dein#add('wsdjeg/dein-ui.vim')
+require("lazy").setup({
+    -- LSP support
+    "neovim/nvim-lsp",
+    "neovim/nvim-lspconfig",
+    "kosayoda/nvim-lightbulb",
 
-" LSP support
-call dein#add('neovim/nvim-lsp')
-call dein#add( 'neovim/nvim-lspconfig')
-call dein#add( 'kosayoda/nvim-lightbulb' )
+    -- Dev Containers
+    "nvim-treesitter/nvim-treesitter",
+    { "https://codeberg.org/esensar/nvim-dev-container" },
 
-" Dev Containers
-call dein#add( 'nvim-treesitter/nvim-treesitter')
-call dein#add( 'https://codeberg.org/esensar/nvim-dev-container')
+    -- Appearance
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
+    "vim-airline/vim-airline",
+    "vim-airline/vim-airline-themes",
+    "edkolev/tmuxline.vim",
+    "ryanoasis/vim-devicons",
+    "tpope/vim-fugitive",
+    "ruifm/gitlinker.nvim",
+    "APZelos/blamer.nvim",
+    "Yggdroot/indentLine",
+    "Osse/double-tap",
 
-"" Appearance:
-" Colors
-call dein#add( 'morhetz/gruvbox')
-call dein#add( 'NLKNguyen/papercolor-theme')
-" Custom Status Line
-call dein#add( 'vim-airline/vim-airline')
-call dein#add( 'vim-airline/vim-airline-themes')
-" Match Tmux line to Vim Status line
-call dein#add( 'edkolev/tmuxline.vim')
-" Add File Type Icons
-call dein#add( 'ryanoasis/vim-devicons')
-" Git Wrapper
-call dein#add( 'tpope/vim-fugitive')
-" Git Linking
-call dein#add( 'ruifm/gitlinker.nvim' )
-" Git Blame
-call dein#add( 'APZelos/blamer.nvim')
-" Display the indention levels with thin vertical lines
-call dein#add( 'Yggdroot/indentLine')
-" Auto remove comments upon double enter
-call dein#add( 'Osse/double-tap')
+    -- General Customization
+    -- { "neoclide/coc.nvim", merged = false },
+    "roxma/nvim-yarp",
+    "roxma/vim-hug-neovim-rpc",
+    "Shougo/neco-syntax",
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope.nvim",
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    "kyazdani42/nvim-web-devicons",
+    "mbbill/undotree",
+    -- "scrooloose/nerdtree.git",
+    "nvim-tree/nvim-tree.lua",
+    "dominikduda/vim_current_word",
 
-"" General Customization:
-" Display autocomplete popup while typing.
-"call dein#add('Shougo/deoplete.nvim')
-"call dein#add('Shougo/deoplete-lsp')
-"call dein#add('carlitux/deoplete-ternjs')
-call dein#add('neoclide/coc.nvim', { 'merged': 0 })
+    -- Syntax
+    "w0rp/ale",
+    "rhysd/vim-lsp-ale",
+    "mattn/emmet-vim",
+    "Raimondi/delimitMate",
+    "scrooloose/nerdcommenter",
+    "Valloric/MatchTagAlways",
+    "alvan/vim-closetag",
+    "2072/PHP-Indenting-for-VIm",
+    "StanAngeloff/php.vim",
+    "elzr/vim-json",
+    "pangloss/vim-javascript",
+    "jelera/vim-javascript-syntax",
+    "mtscout6/syntastic-local-eslint.vim",
+    "xsbeats/vim-blade",
+    { "mxw/vim-jsx", autoload = { filetypes = {"javascript"} } },
+    "ianks/vim-tsx",
+    "leafgarland/typescript-vim",
+    "github/copilot.vim",
+    "madox2/vim-ai",
+    "MunifTanjim/nui.nvim",
+    "dpayne/CodeGPT.nvim",
+    "MarcWeber/vim-addon-mw-utils",
+    "tomtom/tlib_vim",
+    "honza/vim-snippets",
+    -- Run tests
+    { "nvim-neotest/neotest-plenary" },
+    'haydenmeade/neotest-jest',
+    { 
+      "nvim-neotest/neotest",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "antoinemadec/FixCursorHold.nvim"
+      }
+    },
+    -- Leader help
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      init = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+      end,
+      opts = {}
+    },
+})
+-- 
+  -- require("lazy").setup({
+    -- spec = {
+      -- {"neovim/nvim-lspconfig"}
+    -- }
+  -- })
 
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-call dein#add('Shougo/neco-syntax')
-" Fuzzy file, buffer, mru, tag, etc finder.
-"call dein#add( 'ctrlpvim/ctrlp.vim')
-"call dein#add( 'tacahiroy/ctrlp-funky')
-call dein#add( 'nvim-lua/plenary.nvim' )
-call dein#add( 'nvim-telescope/telescope.nvim' )
-call dein#add( 'nvim-telescope/telescope-fzf-native.nvim', { 'hook_post_update': 'make' } )
-call dein#add( 'kyazdani42/nvim-web-devicons' )
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.pyright.setup{}
 
-" Display your undo history in a graph.
-call dein#add( 'mbbill/undotree')
-" Plugin for File Tree
-call dein#add( 'scrooloose/nerdtree.git')
-
-call dein#add( 'dominikduda/vim_current_word' )
-
-"" Syntax
-" General Syntax Helpers
-" Syntax checking hacks for vim
-"call dein#add( 'scrooloose/syntastic')
-call dein#add( 'w0rp/ale')
-" bridge between nvim lsp and ale lsp
-call dein#add( 'rhysd/vim-lsp-ale')
-" Emmet HTML Shorthand
-call dein#add( 'mattn/emmet-vim')
-" Provides insert mode auto-completion for quotes, parens, brackets, etc.
-call dein#add( 'Raimondi/delimitMate')
-" Commenting shortcuts.
-call dein#add( 'scrooloose/nerdcommenter')
-" HTML
-" Highlight matching tag.
-call dein#add( 'Valloric/MatchTagAlways')
-" Auto Close HTML tags.
-call dein#add( 'alvan/vim-closetag')
-" PHP
-call dein#add( '2072/PHP-Indenting-for-VIm')
-call dein#add( 'StanAngeloff/php.vim')
-" JavaScript
-call dein#add( 'elzr/vim-json')
-call dein#add( 'pangloss/vim-javascript')
-call dein#add( 'jelera/vim-javascript-syntax')
-" Use local eslint file instead of global.
-call dein#add( 'mtscout6/syntastic-local-eslint.vim')
-" Templating
-call dein#add( 'xsbeats/vim-blade')
-" Debugging
-"call dein#add( 'vim-vdebug/vdebug')
-
-call dein#add('mxw/vim-jsx', {
-	\   'autoload': {'filetypes': ['javascript']}
-	\ })
-call dein#add('ianks/vim-tsx')
-call dein#add('leafgarland/typescript-vim')
-
-call dein#add('github/copilot.vim')
-
-" ChatGPT
-call dein#add('madox2/vim-ai')
-
-call dein#add('MunifTanjim/nui.nvim')
-call dein#add('dpayne/CodeGPT.nvim')
-
-" Snippet Functionality.
-call dein#add( 'MarcWeber/vim-addon-mw-utils')
-call dein#add( 'tomtom/tlib_vim')
-" Snipmate Requires vim-addon-mw-utils and tlib_vim
-"call dein#add( 'garbas/vim-snipmate')
-call dein#add( 'honza/vim-snippets')
-
-  call dein#end()
-  call dein#save_state()
-endif
-" Allow Auto-Indenting.
-filetype plugin indent on
-syntax enable
+  -- require('telescope').load_extension('fzf')
+  require("nvim-tree").setup()
+END
