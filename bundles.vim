@@ -20,6 +20,8 @@ require("lazy").setup({
     "neovim/nvim-lsp",
     "neovim/nvim-lspconfig",
     "kosayoda/nvim-lightbulb",
+    -- Manage LSPs
+    "williamboman/mason.nvim",
 
     -- Dev Containers
     "nvim-treesitter/nvim-treesitter",
@@ -38,7 +40,8 @@ require("lazy").setup({
     "Osse/double-tap",
 
     -- General Customization
-    -- { "neoclide/coc.nvim", merged = false },
+    -- cd ~/.local/share/nvim/lazy/coc.nvim/ && yarn && yarn build
+    { "neoclide/coc.nvim", merged = false },
     "roxma/nvim-yarp",
     "roxma/vim-hug-neovim-rpc",
     "Shougo/neco-syntax",
@@ -70,22 +73,71 @@ require("lazy").setup({
     "ianks/vim-tsx",
     "leafgarland/typescript-vim",
     "github/copilot.vim",
-    "madox2/vim-ai",
+    -- "madox2/vim-ai",
+    -- "dpayne/CodeGPT.nvim",
     "MunifTanjim/nui.nvim",
-    "dpayne/CodeGPT.nvim",
+    {
+      "jackMort/ChatGPT.nvim",
+      event = "VeryLazy",
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+      },
+      config = function()
+        require("chatgpt").setup({
+          openai_params = { 
+           model = "gpt-4-1106-preview",
+          },
+          openai_edit_params = {
+            model = "gpt-4-1106-preview",
+          },
+        })
+      end
+    },
     "MarcWeber/vim-addon-mw-utils",
     "tomtom/tlib_vim",
     "honza/vim-snippets",
     -- Run tests
-    { "nvim-neotest/neotest-plenary" },
-    'haydenmeade/neotest-jest',
+    "haydenmeade/neotest-jest",
+    "nvim-neotest/neotest-python",
     { 
       "nvim-neotest/neotest",
       dependencies = {
         "nvim-lua/plenary.nvim",
-        "antoinemadec/FixCursorHold.nvim"
+        "antoinemadec/FixCursorHold.nvim",
+        "haydenmeade/neotest-jest",
+        "nvim-neotest/neotest-python",
+      },
+          opts = function()
+      return {
+        -- your neotest config here
+        adapters = {
+          require "neotest-python",
+          require "neotest-jest",
+        },
       }
+    end,
+    config = function(_, opts)
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace "neotest"
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require("neotest").setup(opts)
+    end,
     },
+    "nvim-neotest/neotest-plenary",
+    -- Debugging
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+    "jay-babu/mason-nvim-dap.nvim",
     -- Leader help
     {
       "folke/which-key.nvim",
@@ -96,6 +148,7 @@ require("lazy").setup({
       end,
       opts = {}
     },
+    
 })
 -- 
   -- require("lazy").setup({
@@ -104,9 +157,54 @@ require("lazy").setup({
     -- }
   -- })
 
-  require'lspconfig'.tsserver.setup{}
+ require('lspconfig').tsserver.setup({
+    init_options = { 
+      preferences = { 
+        importModuleSpecifierPreference = 'non-relative', 
+        importModuleSpecifierEnding = 'minimal', 
+      },  
+    } 
+  }) 
+
   require'lspconfig'.pyright.setup{}
 
   -- require('telescope').load_extension('fzf')
   require("nvim-tree").setup()
+  require("mason").setup()
+  -- Testing
+  require("neotest").setup({
+    adapters = {
+      require("neotest-python"),
+      require('neotest-jest')({
+        jestCommand = "jest --watch",
+        jestConfig = "jest.config.js",
+        env = { CI = true },
+        cwd = function(path)
+          return vim.fn.getcwd()
+        end,
+      }),
+    },
+    keys = {
+      {
+        "<leader>tl",
+        function()
+          require("neotest").run.run_last()
+        end,
+        desc = "Run Last Test",
+      },
+      {
+        "<leader>tL",
+        function()
+          require("neotest").run.run_last({ strategy = "dap" })
+        end,
+        desc = "Debug Last Test",
+      },
+      {
+        "<leader>tw",
+        "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>",
+        desc = "Run Watch",
+      },
+    },
+  })
+
 END

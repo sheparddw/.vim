@@ -272,10 +272,11 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline_theme="base16_gruvbox_dark_pale"
 
 " Vim-Ai
-nnoremap <leader>ai :Chat 
-xnoremap <leader>ai :Chat 
-nnoremap <leader>g :AIChat 
-xnoremap <leader>g :AIChat 
+" Use Ctrl+Y to accept completion
+nnoremap <leader>ai :ChatGPTEditWithInstructions<cr>
+xnoremap <leader>ai :ChatGPTEditWithInstructions<cr>
+nnoremap <leader>g :ChatGPTRun  
+xnoremap <leader>g :ChatGPTRun 
 :lua << END
   vim.g["codegpt_openai_api_key"] = os.getenv("OPENAI_API_KEY")
   vim.g["codegpt_chat_completions_url"] = "https://api.openai.com/v1/chat/completions"
