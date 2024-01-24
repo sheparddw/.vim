@@ -59,7 +59,7 @@ require("lazy").setup({
     "rhysd/vim-lsp-ale",
     "mattn/emmet-vim",
     "Raimondi/delimitMate",
-    "scrooloose/nerdcommenter",
+    "numToStr/Comment.nvim",
     "Valloric/MatchTagAlways",
     "alvan/vim-closetag",
     "2072/PHP-Indenting-for-VIm",
@@ -167,6 +167,7 @@ require("lazy").setup({
   }) 
 
   require'lspconfig'.pyright.setup{}
+  require('Comment').setup()
 
   -- require('telescope').load_extension('fzf')
   require("nvim-tree").setup()

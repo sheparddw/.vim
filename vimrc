@@ -131,7 +131,7 @@ set shortmess=filnxtToOFAc
 " mappings
 " See `:help vim.lsp.*` for documentation on any of the below functions
 nnoremap <silent> <c-]>       <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> gd       <cmd>lua vim.lsp.buf.definition()<cr>
+" nnoremap <silent> gd       <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> gD          <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> 1gD         <cmd>lua vim.lsp.buf.type_definition()<cr>
@@ -139,7 +139,7 @@ nnoremap <silent> gn          <cmd>lua vim.lsp.buf.rename()<cr>
 nnoremap <silent> g0          <cmd>lua vim.lsp.buf.document_symbol()<cr>
 nnoremap <silent> gW          <cmd>lua vim.lsp.buf.workspace_symbol()<cr>
 nnoremap <silent> ga          <cmd>lua vim.lsp.buf.code_action()<cr>
-nnoremap <leader>ac          <cmd>lua vim.lsp.buf.code_action()<cr>
+" nnoremap <leader>ac          <cmd>lua vim.lsp.buf.code_action()<cr>
 vnoremap <silent> ga          :<c-u>lua vim.lsp.buf.range_code_action()<cr>
 nnoremap <silent> <c-J>       <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
 nnoremap <silent> H           <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
@@ -160,26 +160,26 @@ highlight def link LspReferenceWrite CursorLine
 highlight def link LspReferenceRead CursorLine
 
 " CoC
-" map <silent> gd <Plug>(coc-definition)
+map <silent> gd <Plug>(coc-definition)
 " map <silent> gy <Plug>(coc-type-definition)
 " map <silent> gi <Plug>(coc-implementation)
 " map <silent> gr <Plug>(coc-references)
-" map <leader>rn <Plug>(coc-rename)
+map <leader>rn <Plug>(coc-rename)
 "  Remap keys for applying codeAction to the current buffer.
-" map <leader>ac  <Plug>(coc-codeaction)
+map <leader>ac  <Plug>(coc-codeaction)
 "  Apply AutoFix to problem on the current line.
 " map <leader>qf  <Plug>(coc-fix-current)
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-" f has('nvim-0.4.0') || has('patch-8.2.0750')
-"  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-"  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-"  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" ndif
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+ endif
 
-" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 " Git Blame enable.
@@ -254,6 +254,9 @@ nnoremap <C-p> <cmd>Telescope find_files<cr>
 " nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>nt :NvimTreeToggle<cr>
 set encoding=utf-8
+
+" Commenting
+" gcc/gbc or gc/gbc to comment/uncomment lines.
 
 " Split to new tab (to open at full size).
 nmap <leader>z :tab split<cr>
