@@ -20,6 +20,8 @@ require("lazy").setup({
     "neovim/nvim-lsp",
     "neovim/nvim-lspconfig",
     "kosayoda/nvim-lightbulb",
+    -- Shows LSP Status
+    "j-hui/fidget.nvim",
     -- Manage LSPs
     "williamboman/mason.nvim",
 
@@ -98,6 +100,14 @@ require("lazy").setup({
     "MarcWeber/vim-addon-mw-utils",
     "tomtom/tlib_vim",
     "honza/vim-snippets",
+    -- TODO: Comments
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("todo-comments").setup()
+      end,
+    },
     -- Run tests
     "haydenmeade/neotest-jest",
     "nvim-neotest/neotest-python",
