@@ -100,6 +100,15 @@ require("lazy").setup({
     "MarcWeber/vim-addon-mw-utils",
     "tomtom/tlib_vim",
     "honza/vim-snippets",
+    {
+      "mg979/vim-visual-multi",
+      lazy = false,
+      init = function()
+		    vim.g.VM_maps = { 
+            ["Find Under"] = "<C-d>"
+        }
+	    end,
+    },
     -- TODO: Comments
     {
       "folke/todo-comments.nvim",
