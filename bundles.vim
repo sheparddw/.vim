@@ -79,23 +79,17 @@ require("lazy").setup({
     -- "dpayne/CodeGPT.nvim",
     "MunifTanjim/nui.nvim",
     {
-      "jackMort/ChatGPT.nvim",
-      event = "VeryLazy",
+      "CopilotC-Nvim/CopilotChat.nvim",
+      branch = "canary",
       dependencies = {
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
+        { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
       },
-      config = function()
-        require("chatgpt").setup({
-          openai_params = { 
-           model = "gpt-4-1106-preview",
-          },
-          openai_edit_params = {
-            model = "gpt-4-1106-preview",
-          },
-        })
-      end
+      opts = {
+        debug = true, -- Enable debugging
+        -- See Configuration section for rest
+      },
+      -- See Commands section for default commands if you want to lazy load on them
     },
     "MarcWeber/vim-addon-mw-utils",
     "tomtom/tlib_vim",
@@ -154,9 +148,11 @@ require("lazy").setup({
     "nvim-neotest/neotest-plenary",
     -- Debugging
     "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio",
+    { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
     "theHamsta/nvim-dap-virtual-text",
     "jay-babu/mason-nvim-dap.nvim",
+    "folke/neodev.nvim",
     -- Leader help
     {
       "folke/which-key.nvim",
@@ -188,6 +184,7 @@ require("lazy").setup({
   require'lspconfig'.pyright.setup{}
   require('Comment').setup()
 
+  require("dapui").setup()
   -- require('telescope').load_extension('fzf')
   require("nvim-tree").setup()
   require("mason").setup()
@@ -226,5 +223,6 @@ require("lazy").setup({
       },
     },
   })
+
 
 END
