@@ -80,7 +80,7 @@ require("lazy").setup({
     "MunifTanjim/nui.nvim",
     {
       "CopilotC-Nvim/CopilotChat.nvim",
-      branch = "canary",
+      branch = "main",
       dependencies = {
         { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
         { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -172,7 +172,7 @@ require("lazy").setup({
     -- }
   -- })
 
- require('lspconfig').tsserver.setup({
+ require('lspconfig').ts_ls.setup({
     init_options = { 
       preferences = { 
         importModuleSpecifierPreference = 'non-relative', 

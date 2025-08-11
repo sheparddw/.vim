@@ -159,6 +159,9 @@ highlight def link LspReferenceText CursorLine
 highlight def link LspReferenceWrite CursorLine
 highlight def link LspReferenceRead CursorLine
 
+" Set python3 path for plugins that need it
+let g:python3_host_prog = '/Users/sheparddw/.asdf/shims/python3'
+
 " CoC
 map <silent> gd <Plug>(coc-definition)
 " map <silent> gy <Plug>(coc-type-definition)
