@@ -278,11 +278,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline_theme="base16_gruvbox_dark_pale"
 
 " Vim-Ai
-" Use Ctrl+Y to accept completion
-nnoremap <leader>ch :CopilotChatToggle<cr>
-xnoremap <leader>ch :CopilotChatToggle<cr>
-nnoremap <leader>gf :CopilotChatFix  
-xnoremap <leader>gf :CopilotChatFix 
 :lua << END
   vim.g["codegpt_openai_api_key"] = os.getenv("OPENAI_API_KEY")
   vim.g["codegpt_chat_completions_url"] = "https://api.openai.com/v1/chat/completions"
@@ -291,18 +286,4 @@ xnoremap <leader>gf :CopilotChatFix
       ["model"] = "gpt-4"
     }
   }
-
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
-
-  map('n', '<leader>ai', '', {
-    noremap = true,
-    callback = function()
-      local input = vim.fn.input("Quick Chat: ")
-      if input ~= "" then
-        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-      end
-    end,
-    desc = "CopilotChat - Quick chat"
-  })
 END

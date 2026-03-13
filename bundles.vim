@@ -74,23 +74,23 @@ require("lazy").setup({
     { "mxw/vim-jsx", autoload = { filetypes = {"javascript"} } },
     "ianks/vim-tsx",
     "leafgarland/typescript-vim",
-    "github/copilot.vim",
+    -- "github/copilot.vim",
     -- "madox2/vim-ai",
     -- "dpayne/CodeGPT.nvim",
     "MunifTanjim/nui.nvim",
-    {
-      "CopilotC-Nvim/CopilotChat.nvim",
-      branch = "main",
-      dependencies = {
-        { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-      },
-      opts = {
-        debug = true, -- Enable debugging
-        -- See Configuration section for rest
-      },
-      -- See Commands section for default commands if you want to lazy load on them
-    },
+    -- {
+    --   "CopilotC-Nvim/CopilotChat.nvim",
+    --   branch = "main",
+    --   dependencies = {
+    --     { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+    --     { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    --   },
+    --   opts = {
+    --     debug = true, -- Enable debugging
+    --     -- See Configuration section for rest
+    --   },
+    --   -- See Commands section for default commands if you want to lazy load on them
+    -- },
     "MarcWeber/vim-addon-mw-utils",
     "tomtom/tlib_vim",
     "honza/vim-snippets",
@@ -172,16 +172,17 @@ require("lazy").setup({
     -- }
   -- })
 
- require('lspconfig').ts_ls.setup({
-    init_options = { 
-      preferences = { 
-        importModuleSpecifierPreference = 'non-relative', 
-        importModuleSpecifierEnding = 'minimal', 
-      },  
-    } 
-  }) 
+ vim.lsp.config('ts_ls', {
+    init_options = {
+      preferences = {
+        importModuleSpecifierPreference = 'non-relative',
+        importModuleSpecifierEnding = 'minimal',
+      },
+    },
+  })
+  vim.lsp.enable('ts_ls')
 
-  require'lspconfig'.pyright.setup{}
+  vim.lsp.enable('pyright')
   require('Comment').setup()
 
   require("dapui").setup()
